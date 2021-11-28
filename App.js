@@ -17,7 +17,10 @@ export default function App() {
     itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
   }
+  function DeleteTask(){
 
+  }
+  
   return (
     <View style={styles.container}>
         <View style = {styles.taskWrapper}>
