@@ -17,10 +17,10 @@ export default function App() {
     itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
   }
-  function DeleteTask(){
-
+  function DeleteTask(childIndex){
+    CompleteTask(childIndex);
   }
-  
+
   return (
     <View style={styles.container}>
         <View style = {styles.taskWrapper}>
@@ -29,8 +29,8 @@ export default function App() {
             {/*Tasks*/
                 taskItems.map((item, index) => {
                   return (
-                    <TouchableOpacity key={index} onPress={() => CompleteTask(index)}>
-                      <Task text={item} childIndex = {index} />
+                    <TouchableOpacity key={index}>
+                      <Task text={item} childIndex = {index} deletetask={DeleteTask} />
                     </TouchableOpacity>
                   )
                 })

@@ -12,7 +12,7 @@ const Task = (props) => {
         </View>
     )
     function outputIndex(){
-        console.log(props.childIndex);
+        props.deletetask(props.childIndex);
     }
 }
 
