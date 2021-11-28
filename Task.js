@@ -1,18 +1,29 @@
-import React from "react";
-import { View, Text, StyleSheet, ProgressViewIOSComponent, TouchableOpacity } from "react-native";
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, ProgressViewIOSComponent, TouchableOpacity, Modal } from "react-native";
 
+var show = false;
 const Task = (props) => {
+    //var show = false
     return(
-        <View style={styles.item}>
+        <TouchableOpacity style={styles.item} onPress={() => debugOutput()}>
             <View style={styles.itemLeft}>
                 <TouchableOpacity style={styles.square} onPress={() => outputIndex()}/>
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>
             <View style={styles.circular}></View>
-        </View>
+            <Modal visible = {show} transparent={true}>
+                <View>
+
+                </View>
+            </Modal>
+        </TouchableOpacity>
     )
     function outputIndex(){
         props.deletetask(props.childIndex);
+    }
+    function debugOutput(){
+        show = true;
+        console.log(show);
     }
 }
 

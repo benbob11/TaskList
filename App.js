@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View, Modal } from 'react-native';
 import Task from './Task';
 
 export default function App() {
@@ -29,9 +29,9 @@ export default function App() {
             {/*Tasks*/
                 taskItems.map((item, index) => {
                   return (
-                    <TouchableOpacity key={index}>
+                    <View key={index}>
                       <Task text={item} childIndex = {index} deletetask={DeleteTask} />
-                    </TouchableOpacity>
+                    </View>
                   )
                 })
             }
