@@ -1,19 +1,28 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, ProgressViewIOSComponent, TouchableOpacity, Modal } from "react-native";
+import { Keyboard, View, Text, TextInput, StyleSheet, ProgressViewIOSComponent, TouchableOpacity, KeyboardAvoidingView, Modal } from "react-native";
 
-var show = false;
+//var show = false;
+//const [show, setShow] = useState(false);
 const Task = (props) => {
+    const [show, setShow] = useState(false);
+    const [taskDescription, setTaskDescription] = useState();
     //var show = false
     return(
-        <TouchableOpacity style={styles.item} onPress={() => debugOutput()}>
+        <TouchableOpacity style={styles.item} onPress={() => setShow(!show)}>
             <View style={styles.itemLeft}>
                 <TouchableOpacity style={styles.square} onPress={() => outputIndex()}/>
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>
             <View style={styles.circular}></View>
-            <Modal visible = {show} transparent={true}>
-                <View>
 
+            <Modal visible = {show} transparent={true}>
+                <View style={styles.modalBackground}>
+                    <View style={styles.modalBox}>
+                        <TouchableOpacity style={styles.modalExit} onPress={() => setShow(!show)} />
+                        <Text style={styles.modalTitle}>{props.text}</Text>
+
+                        <TextInput style={styles.input} placeholder={'write a task'} value={taskDescription} onChangeText={text => setTaskDescription(text)} multiline={true} />
+                    </View>
                 </View>
             </Modal>
         </TouchableOpacity>
@@ -22,8 +31,9 @@ const Task = (props) => {
         props.deletetask(props.childIndex);
     }
     function debugOutput(){
-        show = true;
+        //show = true;
         console.log(show);
+        setShow(!show);
     }
 }
 
@@ -60,6 +70,34 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5,
     },
+    modalBackground:{
+        backgroundColor: '#000000aa',
+        flex:1,
+    },
+    modalBox:{
+        backgroundColor: '#ffffff',
+        margin: 50,
+        padding: 40,
+        borderRadius: 10,
+        flex: 1,
+    },
+    modalExit:{
+        width: 24,
+        height: 24,
+        backgroundColor: '#FF0000',
+        borderRadius: 5,
+        marginLeft: 15,
+        position: 'absolute',
+        right: 20,
+        top: 20
+    },
+    modalTitle:{
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    modalText:{
+        
+    }
 });
 
 export default Task;
