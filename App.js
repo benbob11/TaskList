@@ -24,7 +24,7 @@ export default function App() {
   return (
     <View style={styles.container}>
         <View style = {styles.taskWrapper}>
-          <Text style = {styles.sectionTitle}>Today's Tasks</Text>
+          <Text style = {styles.sectionTitle}>To-do List</Text>
           <View style={styles.items}>
             {/*Tasks*/
                 taskItems.map((item, index) => {

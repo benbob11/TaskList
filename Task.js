@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Keyboard, View, Text, TextInput, StyleSheet, ProgressViewIOSComponent, TouchableOpacity, KeyboardAvoidingView, Modal } from "react-native";
+import { Keyboard, View, Text, TextInput, Image, StyleSheet, ProgressViewIOSComponent, TouchableOpacity, KeyboardAvoidingView, Modal } from "react-native";
 
 //var show = false;
 //const [show, setShow] = useState(false);
@@ -10,7 +10,9 @@ const Task = (props) => {
     return(
         <TouchableOpacity style={styles.item} onPress={() => setShow(!show)}>
             <View style={styles.itemLeft}>
-                <TouchableOpacity style={styles.square} onPress={() => outputIndex()}/>
+                <TouchableOpacity style={styles.square} onPress={() => outputIndex()}>
+                    <Image source={require('./assets/BinIcon.jpg')} style={styles.binIcon}></Image>
+                </TouchableOpacity>
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>
             <View style={styles.circular}></View>
@@ -21,7 +23,8 @@ const Task = (props) => {
                         <TouchableOpacity style={styles.modalExit} onPress={() => setShow(!show)} />
                         <Text style={styles.modalTitle}>{props.text}</Text>
 
-                        <TextInput style={styles.input} placeholder={'write a task'} value={taskDescription} onChangeText={text => setTaskDescription(text)} multiline={true} />
+                        
+                        <TextInput style={styles.modalText} placeholder={'Task Description'} value={taskDescription} onChangeText={text => setTaskDescription(text)} multiline={true} />
                     </View>
                 </View>
             </Modal>
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
     modalExit:{
         width: 24,
         height: 24,
-        backgroundColor: '#FF0000',
+        backgroundColor: '#EE0000',
         borderRadius: 5,
         marginLeft: 15,
         position: 'absolute',
@@ -96,7 +99,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     modalText:{
-        
+        fontSize: 16,
+        marginLeft: 0,
+        margin: 10,
+        width: 210,
+    },
+    binIcon: {
+        width: 15,
+        height: 15,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginLeft: 4,
+        margin: 4
     }
 });
 
